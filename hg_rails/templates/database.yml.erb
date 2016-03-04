@@ -1,0 +1,11 @@
+<%= node["hg_rails"]["env"] %>:
+  adapter: <%= node["hg_rails"]["database"]["adapter"] %>
+  database: <%= node["hg_rails"]["database"]["database"] %>
+  username: <%= node["hg_rails"]["database"]["username"] %>
+  password: <%= node["hg_rails"]["database"]["password"]%>
+<% if node["hg_rails"]["database"]["host"] %>
+  host: <%= node["hg_rails"]["database"]["host"] %>
+<% end %>
+  reconnect: true
+  port: <%= node["hg_rails"]["database"]["port"] %>
+  pool: <%= node["hg_rails"]["database"]["pool"] %>

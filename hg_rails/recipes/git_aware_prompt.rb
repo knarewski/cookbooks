@@ -1,9 +1,9 @@
 execute "install git aware prompt" do
-  user node["hg_rails"]["user"]
-  environment ({ 'HOME' => ::Dir.home(node["hg_rails"]["user"]), 'USER' => node["hg_rails"]["user"] })
+  user node["user"]
+  environment ({ 'HOME' => ::Dir.home(node["user"]), 'USER' => node["user"] })
   command %{
-    mkdir #{::Dir.home(node["hg_rails"]["user"])}/.bash
-    cd #{::Dir.home(node["hg_rails"]["user"])}/.bash
+    mkdir #{::Dir.home(node["user"])}/.bash
+    cd #{::Dir.home(node["user"])}/.bash
     git clone git://github.com/jimeh/git-aware-prompt.git
     echo 'export GITAWAREPROMPT=~/.bash/git-aware-prompt' >> ~/.profile
     echo 'source $GITAWAREPROMPT/main.sh' >> ~/.profile

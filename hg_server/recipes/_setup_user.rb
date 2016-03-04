@@ -17,19 +17,21 @@ end
   end
 end
 
-file "/etc/sudoers.d/admin" do
-  content "%ADMIN ALL=(ALL) NOPASSWD:ALL"
-  user "root"
-  group "root"
-  mode "0440"
-end
-
 if node[:user_sudo]
+  # sudo user do # temprorary fix
+  #   user      user
+  #   nopasswd  true
+  # end
+
   group "ADMIN" do
-    action :create
+    action :modify
     members user
     append true
   end
+end
+
+breakpoint 'name' do
+  action :break
 end
 
 if node["ssh_keys"].any?

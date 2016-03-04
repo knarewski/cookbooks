@@ -6,6 +6,16 @@ DEFAULT_PACKAGES = %w(build-essential git-core curl)
   end
 end
 
+group "ADMIN" do
+  action :create
+end
+
+sudo "ADMIN" do
+  group    "%ADMIN"
+  nopasswd true
+  # setenv   true
+end
+
 include_recipe "hg_server::_setup_user"
 
 if node["hg_server"]["users"].any?

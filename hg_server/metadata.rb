@@ -7,3 +7,5 @@ long_description 'Installs/Configures hg_server'
 version          '0.1.0'
 
 depends 'ssh_authorized_keys'
+depends 'sudo'
+depends 'mysql', '5.6.3'
