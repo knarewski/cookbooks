@@ -1,0 +1,21 @@
+server {
+  listen <%= @listen.join(" ") %>;
+  server_name <%= @server_name.join(" ") %>;
+  root <%= @root %>;
+  passenger_ruby <%= @passenger_ruby %>;
+  passenger_enabled on;
+  passenger_app_env <%= @env %>;
+  access_log /var/log/nginx/<%= @name %>.access;
+  error_log /var/log/nginx/<%= @name %>.error;
+  client_max_body_size 3m;
+
+  <% @locations.each do |location| %>
+    location <%= location["operator"] %> {
+      <% location["options"].each do |option, value| %>
+        <%= option %> <%= value %>;
+      <% end %>
+
+      <%= "break;" if location["break"] %>
+    }
+  <% end %>
+}
