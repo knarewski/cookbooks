@@ -1,5 +1,5 @@
 name             'hg_server'
-maintainer       'The Authors'
+maintainer       'Jaroslaw Rodak'
 maintainer_email 'jaroslaw.rodak@hgintelligence.com'
 license          'all_rights'
 description      'Installs/Configures hg_server'

@@ -15,6 +15,6 @@ template File.join(config_dir, "database.yml") do
   source 'database.yml.erb'
   owner node[:user]
   group node[:user]
-  mode '0755'
+  mode '0700'
   not_if { File.exist?(File.join(config_dir, "database.yml")) }
 end
