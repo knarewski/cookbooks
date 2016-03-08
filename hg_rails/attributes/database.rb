@@ -1,11 +1,10 @@
 default["hg_rails"]["env"] = "production"
-
 default["hg_rails"]["database"]["port"] = 3306
 default["hg_rails"]["database"]["pool"] = 50
 default["hg_rails"]["database"]["adapter"] = "mysql2"
 
 if ["development", "test"].include?(node["hg_rails"]["env"])
-  default["hg_rails"]["database"]["name"] = "#{node["hg_rails"]["app_name"]}_#{node["hg_rails"]["env"]}"
+  default["hg_rails"]["database"]["name"]     = "#{node["hg_rails"]["app_name"]}_#{node["hg_rails"]["env"]}"
   default["hg_rails"]["database"]["username"] = "ADJUST_ME"
   default["hg_rails"]["database"]["password"] = "ADJUST_ME"
 else

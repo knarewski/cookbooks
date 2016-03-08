@@ -1,4 +1,3 @@
-default["hg_server"] = {}
 default["hg_server"]["apt_packages"] = []
 
 default["hg_server"]["users"] = {}

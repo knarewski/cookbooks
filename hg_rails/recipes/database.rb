@@ -29,5 +29,6 @@ template File.join(config_dir, "database.yml") do
   owner user
   group user
   mode '0664'
+  variables node["hg_rails"]
   not_if { File.exist?(File.join(config_dir, "database.yml")) }
 end

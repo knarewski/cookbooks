@@ -22,7 +22,7 @@ ruby_block "insert lines to ~/.profile" do
     file = Chef::Util::FileEdit.new("/home/#{node["user"]}/.profile")
     file.insert_line_if_no_match(/GITAWAREPROMPT=~/, "export GITAWAREPROMPT=~/.bash/git-aware-prompt")
     file.insert_line_if_no_match(/\$GITAWAREPROMPT/, "source $GITAWAREPROMPT/main.sh")
-    file.insert_line_if_no_match(/PS1=/, "export PS1=#{node['hg_rails']['git_aware_prompt']['ps1']}")
+    file.insert_line_if_no_match(/PS1=/, "export PS1=#{node['hg_development']['git_aware_prompt']['ps1']}")
     file.write_file
   end
 end
