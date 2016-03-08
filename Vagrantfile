@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
     ssh-keyscan 127.0.0.1 >> ~/.ssh/known_hosts
   SCRIPT
 
-  setup_script << "echo '#{public_key}' > ~/.ssh/authorized_keys"
+  setup_script << "echo '#{public_key}' > ~/.ssh/authorized_keys" if public_key
 
   config.vm.provision "shell", inline: setup_script, privileged: false
 end
