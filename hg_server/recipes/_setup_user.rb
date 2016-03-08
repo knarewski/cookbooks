@@ -34,8 +34,8 @@ breakpoint 'name' do
   action :break
 end
 
-if node["ssh_keys"].any?
-  node["ssh_keys"].each do |ssh_key|
+if node["hg_server"]["ssh_keys"].any?
+  node["hg_server"]["ssh_keys"].each do |ssh_key|
     ssh_authorize_key ssh_key["identifier"] do
       key ssh_key["value"]
       user user
