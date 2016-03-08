@@ -8,21 +8,21 @@ user user do
   shell '/bin/bash'
 end
 
-[home_dir, ssh_dir].each do |dir|
-  directory dir do
-    mode "700"
-    owner user
-    group user
-    recursive true
-  end
+directory home_dir do
+  owner user
+  group user
+  recursive true
+  mode '755'
+end
+
+directory ssh_dir do
+  mode "700"
+  owner user
+  group user
+  recursive true
 end
 
 if node[:user_sudo]
-  # sudo user do # temprorary fix
-  #   user      user
-  #   nopasswd  true
-  # end
-
   group "ADMIN" do
     action :modify
     members user
