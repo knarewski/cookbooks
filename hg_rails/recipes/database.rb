@@ -1,3 +1,5 @@
+require 'yaml'
+
 user = node["user"]
 
 config_dirs = if ["development", "test"].include?(node["hg_rails"]["env"])

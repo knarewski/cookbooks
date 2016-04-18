@@ -6,3 +6,4 @@ description      'Installs/Configures rails stack'
 version          '1.0.0'
 
 depends "rvm"
+depends "sudo"

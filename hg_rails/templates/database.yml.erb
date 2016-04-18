@@ -9,3 +9,9 @@
   reconnect: true
   port: <%= node["hg_rails"]["database"]["port"] %>
   pool: <%= node["hg_rails"]["database"]["pool"] %>
+
+<% if node["hg_rails"]["database"]["include_additional_databases"] && node["hg_rails"]["database"]["additional_databases"].any? %>
+  <% node["hg_rails"]["database"]["additional_databases"].each do |database_name, database_hash| %>
+<%= { database_name => { node["hg_rails"]["env"] => database_hash.to_hash } }.to_yaml.split("\n")[1..-1].join("\n") %>
+  <% end %>
+<% end  %>

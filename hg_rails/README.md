@@ -80,6 +80,36 @@ structure:
 }
 ```
 
+You can also specify additional databases to be included in database.yml with following:
+
+```ruby
+node["hg_rails"]["database"]["include_additional_databases"] = true
+node["hg_rails"]["database"]["additional_databases"]["database_name"]["port"] = 3306
+node["hg_rails"]["database"]["additional_databases"]["database_name"]["pool"] = 50
+node["hg_rails"]["database"]["additional_databases"]["database_name"]["adapter"] = "mysql2"
+node["hg_rails"]["database"]["additional_databases"]["database_name"]["username"] = "tester"
+node["hg_rails"]["database"]["additional_databases"]["database_name"]["database"] = "test_database"
+node["hg_rails"]["database"]["additional_databases"]["database_name"]["password"] = "qwerty"
+node["hg_rails"]["database"]["additional_databases"]["database_name"]["host"]     = nil
+```
+
+Note that `username`, `database` and `password` probably should be handled via data_bag as follows:
+
+```
+{
+  "database": {
+    ...,
+    "additional_databases": {
+      "database_name": {
+        "database": "test",
+        "username": "user123",
+        "password": "qwerty"
+      }
+    }
+  }
+}
+```
+
 ### dotenv
 
 Scaffolds `.env` file within `/home/:user/:app_name/` (for development/test env) or within `/home/:user/:app_name/shared/.env` (for other envs).
