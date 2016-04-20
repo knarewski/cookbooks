@@ -44,7 +44,11 @@ database_config[node["hg_rails"]["env"]] = main_db_config
 if raw_db_config["additional_databases"].any?
   raw_db_config["additional_databases"].each do |database_name, database_hash|
     details = database_hash.to_hash
-    database_config[database_name] = { node["hg_rails"]["env"] => details }
+    if raw_db_config["additional_databases_use_env_namespace"]
+      database_config[database_name] = { node["hg_rails"]["env"] => details }
+    else
+      database_config[database_name] = details
+    end
   end
 end
 

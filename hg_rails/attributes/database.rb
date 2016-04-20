@@ -16,6 +16,7 @@ else
   default["hg_rails"]["database"]["host"]     = database_secrets["host"]
 end
 
+default["hg_rails"]["database"]["additional_databases_use_env_namespace"] = true
 default["hg_rails"]["database"]["additional_databases"] = {}
 additional_databases_secrets = database_secrets.fetch("additional_databases", {})
 
