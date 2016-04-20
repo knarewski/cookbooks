@@ -2,7 +2,7 @@
 
 This cookbook installs and configures rails environment for you.
 
-# Avialbale recipes
+# Available recipes
 
  * `recipe["hg_rails::default"]` - installs RVM and rubies for given users
  * `recipe["hg_rails::database"]` - prepares database.yml
@@ -83,7 +83,6 @@ structure:
 You can also specify additional databases to be included in database.yml with following:
 
 ```ruby
-node["hg_rails"]["database"]["include_additional_databases"] = true
 node["hg_rails"]["database"]["additional_databases"]["database_name"]["port"] = 3306
 node["hg_rails"]["database"]["additional_databases"]["database_name"]["pool"] = 50
 node["hg_rails"]["database"]["additional_databases"]["database_name"]["adapter"] = "mysql2"
