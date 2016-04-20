@@ -25,12 +25,37 @@ config_dirs.each do |config_dir|
   end
 end
 
+database_config = {}
+raw_db_config = node["hg_rails"]["database"]
+
+main_db_config = {
+  "adapter"    => raw_db_config["adapter"],
+  "database"   => raw_db_config["database"],
+  "username"   => raw_db_config["username"],
+  "password"   => raw_db_config["password"],
+  "port"       => raw_db_config["port"],
+  "pool"       => raw_db_config["pool"],
+  "reconnect"  => true
+}
+main_db_config["host"] = raw_db_config["host"]         if raw_db_config["host"]
+main_db_config["encoding"] = raw_db_config["encoding"] if raw_db_config["encoding"]
+database_config[node["hg_rails"]["env"]] = main_db_config
+
+if raw_db_config["additional_databases"].any?
+  raw_db_config["additional_databases"].each do |database_name, database_hash|
+    details = database_hash.to_hash
+    if raw_db_config["additional_databases_use_env_namespace"]
+      database_config[database_name] = { node["hg_rails"]["env"] => details }
+    else
+      database_config[database_name] = details
+    end
+  end
+end
+
 config_dir = config_dirs.last
-template File.join(config_dir, "database.yml") do
-  source 'database.yml.erb'
+file File.join(config_dir, "database.yml") do
+  content database_config.to_yaml
   owner user
   group user
-  mode '0664'
-  variables node["hg_rails"]
-  not_if { File.exist?(File.join(config_dir, "database.yml")) }
+  mode "0664"
 end

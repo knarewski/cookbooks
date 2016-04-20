@@ -61,7 +61,8 @@ node["hg_rails"]["database"]["username"] = nil
 node["hg_rails"]["database"]["database"] = nil
 node["hg_rails"]["database"]["password"] = nil
 node["hg_rails"]["database"]["host"]     = nil
-
+node["hg_rails"]["database"]["additional_databases_use_env_namespace"] = true
+node["hg_rails"]["database"]["additional_databases"] = {}
 ```
 
 If you are not setting up `development` or `test` env you can (and SHOULD) use encrypted data bag. Structure should be as follows:
@@ -80,7 +81,7 @@ structure:
 }
 ```
 
-You can also specify additional databases to be included in database.yml with following:
+You can specify additional databases to be included in database.yml with following:
 
 ```ruby
 node["hg_rails"]["database"]["additional_databases"]["database_name"]["port"] = 3306
