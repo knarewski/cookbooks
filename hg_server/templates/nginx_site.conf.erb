@@ -5,6 +5,9 @@ server {
   passenger_ruby <%= @passenger_ruby %>;
   passenger_enabled on;
   passenger_app_env <%= @env %>;
+  <% if @passenger_spawn_method %>
+    passenger_spawn_method <%= @passenger_spawn_method %>;
+  <% end %>
   access_log /var/log/nginx/<%= @name %>.access;
   error_log /var/log/nginx/<%= @name %>.error;
   client_max_body_size 3m;
