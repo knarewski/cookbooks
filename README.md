@@ -13,8 +13,8 @@ HG cookboks for Ubuntu/Debian servers provisioning.
 ### Available cookbooks
 
 * `hg_development` - Development tools setup
-* `hg_rails` - Rails stack setup (ruby, ror, database, dotenv)
-* `hg_server` - Server setup (stuff like creating users, deployment keys, mysql, redis)
+* `hg_rails` - Rails stack setup (Ruby, RoR, database, dotenv)
+* `hg_server` - Server setup (creating users, deployment keys, MySQL, Redis etc.)
 
 ### Berkshelf
 
@@ -25,8 +25,8 @@ sample Berskfile file:
 
 source "https://api.berkshelf.com"
 
-cookbook "hg_server", git: 'git@github.com:Synerise/cookbooks.git', rel: "hg_server/",      tag: "1.0.1"
-cookbook "hg_rails", git: 'git@github.com:Synerise/cookbooks.git', rel: "hg_rails/",       tag: "1.0.1"
+cookbook "hg_server", git: 'git@github.com:Synerise/cookbooks.git', rel: "hg_server/",           tag: "1.0.1"
+cookbook "hg_rails", git: 'git@github.com:Synerise/cookbooks.git', rel: "hg_rails/",             tag: "1.0.1"
 cookbook "hg_development", git: 'git@github.com:Synerise/cookbooks.git', rel: "hg_development/", tag: "1.0.1"
 ```
 
@@ -51,5 +51,5 @@ gem "berkshelf"
 3. Run `bundle exec knife solo init ./chef/`
 4. Create `Berskfile` file within `./chef/` directory (example content is presented above)
 5. Within `./chef/nodes` create json file connected with node that you wish to provision. For Vagrant example it is `127.0.0.1.json`. Within `run_list` key specify array of recipes to be run and of course specify all required node params and data_bags for provisioning (it depends on cookbook you will be using).
-6. Run `knife solo prepare vagrant@127.0.0.1 -p 2222` to install chef on server (2222 port is internal setting of Vagrant)
+6. Run `knife solo prepare vagrant@127.0.0.1 -p 2222` to install Chef on server (2222 port is internal setting of Vagrant)
 7. Finally run `knife solo cook vagrant@127.0.0.1 -p 2222`
