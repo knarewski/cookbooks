@@ -1,0 +1,1 @@
+default["hg_server"]["nodejs"]["packages"] = []

@@ -10,3 +10,4 @@ depends 'ssh_authorized_keys'
 depends 'sudo'
 depends 'mysql', '5.6.3'
 depends 'nginx', "> 2.7.0"
+depends 'nodejs'
