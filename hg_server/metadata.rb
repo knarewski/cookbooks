@@ -4,7 +4,7 @@ maintainer_email 'jaroslaw.rodak@hgintelligence.com'
 license          'all_rights'
 description      'Installs/Configures hg_server'
 long_description 'Installs/Configures hg_server'
-version          '1.0.0'
+version          '1.0.5'
 
 depends 'ssh_authorized_keys'
 depends 'sudo'

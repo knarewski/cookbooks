@@ -4,5 +4,5 @@ maintainer_email 'jaroslaw.rodak@hgintelligence.com'
 license          'all_rights'
 description      'Installs/Configures hg_development'
 long_description 'Installs/Configures hg_development'
-version          '1.0.4'
+version          '1.0.5'
 

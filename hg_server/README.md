@@ -5,6 +5,10 @@ This cookbook configures server for you.
 # Avialbale recipes
 
  * `recipe["hg_server::default"]` - installs RVM and rubies for given users
+ * `recipe["hg_server::nodejs"]` - install Nodejs with NPM and given packages
+ * `recipe["hg_server::mysql"]` - installs mysql
+ * `recipe["hg_server::nginx_passenger"]` - installs nginx with passenger ruby, additionally it creates sites for nginx conf
+ * `recipe["hg_server::redis"]` - install redis and configures it
 
 # Common attributes
 ```ruby
@@ -190,4 +194,14 @@ node["hg_server"]["redis"]["client_output_buffer_limit"]  = {
 node["hg_server"]["redis"]["include_config_files"]        = []
 node["hg_server"]["redis"]["ulimit"]                      = ""
 node["hg_server"]["redis"]["auto_upgrade"]                = false
+```
+
+### nodejs
+
+Installs nodejs, npm and desired node packages
+
+Attributes:
+
+```ruby
+node["hg_server"]["nodejs"]["packages"] = [ "bower" ]
 ```
