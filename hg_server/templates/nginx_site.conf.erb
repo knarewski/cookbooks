@@ -1,5 +1,7 @@
 server {
-  listen <%= @listen.join(" ") %>;
+  <% @listen.each do |port| %>
+    listen <%= port %>;
+  <% end %>
   server_name <%= @server_name.join(" ") %>;
   root <%= @root %>;
   passenger_ruby <%= @passenger_ruby %>;
