@@ -4,6 +4,9 @@ default["hg_rails"]["database"]["pool"] = 50
 default["hg_rails"]["database"]["adapter"] = "mysql2"
 
 database_secrets = Chef::EncryptedDataBagItem.load(node["data_bag_name"], "secrets")["database"]
+environment_secrets = Chef::EncryptedDataBagItem.load(node["data_bag_name"], "secrets")[node.chef_environment] || {}
+env_database_secrets = environment_secrets["database"] || {}
+database_secrets = Chef::Mixin::DeepMerge.deep_merge(database_secrets, env_database_secrets)
 
 if ["development", "test"].include?(node["hg_rails"]["env"])
   default["hg_rails"]["database"]["name"]     = "#{node["hg_rails"]["app_name"]}_#{node["hg_rails"]["env"]}"
